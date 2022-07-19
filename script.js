@@ -1,53 +1,41 @@
-class Producto {
-    constructor (nombre, precio, stock) {
+class Alumno {
+    constructor (nombre, materia, nota) {
         this.nombre = nombre;
-        this.precio = precio;
-        this.stock = stock;
+        this.materia = materia;
+        this.nota = nota;
     }
 }
 
-const producto1 = new Producto (prompt("Ingrese nombre del producto"), parseFloat(prompt("Ingrese Precio del producto")), parseInt(prompt("Ingrese stock del producto")));
 
-const producto2 = new Producto (prompt("Ingrese nombre del producto"), parseFloat(prompt("Ingrese Precio del producto")), parseInt(prompt("Ingrese stock del producto")));
+const alumno1 = new Alumno (prompt("Ingrese Alumno"), prompt("Ingrese materia"), parseFloat(prompt("Ingrese nota")));
 
-const producto3 = new Producto (prompt("Ingrese nombre del producto"), parseFloat(prompt("Ingrese Precio del producto")), parseInt(prompt("Ingrese stock del producto")));
+const alumno2 = new Alumno (prompt("Ingrese Alumno"), prompt("Ingrese materia"), parseFloat(prompt("Ingrese nota")));
 
-const producto4 = new Producto (prompt("Ingrese nombre del producto"), parseFloat(prompt("Ingrese Precio del producto")), parseInt(prompt("Ingrese stock del producto")));
+const alumno3 = new Alumno (prompt("Ingrese Alumno"), prompt("Ingrese materia"), parseFloat(prompt("Ingrese nota")));
 
-const productos = [producto1, producto2, producto3, producto4];
+const alumno4 = new Alumno (prompt("Ingrese Alumno"), prompt("Ingrese materia"), parseFloat(prompt("Ingrese nota")));
 
-console.log("Productos ingresados = ")
-productos.forEach(function(productos){
-    console.log(productos);
-})
+const alumnos = [alumno1, alumno2, alumno3, alumno4];
 
-let acum = 0;
+const divalum = document.getElementById("alumncontainer");
 
-productos.forEach(function(productos) {
-    if (productos.stock > 100) {
-        acum ++;
+let aprobado;
+
+alumnos.forEach(alumnos => {
+    if (alumnos.nota >= 6){
+        aprobado = "Aprobado";
     }
-})
+    else {
+        aprobado = "Desaprobado";
+    }
 
-console.log ("Cantidad de productos con un stock mayor a 100 = " + acum);
-
-let promedio = 0;
-let cont = 0;
-
-productos.forEach(function(productos) {
-    cont += productos.precio;
-})
-
-promedio = cont / productos.length;
-
-console.log("Promedio de los precios de los productos = " + "$" + promedio);
-
-
-const productosimp = productos.map( productos => {
-    return productos.precio * 1.21;
-})
-
-console.log("Precio de los productos con IVA: ")
-productosimp.forEach(function(productosimp) {
-    console.log(productosimp);
+    divalum.innerHTML += `
+    <div id="alumn">
+        <p>Nombre: ${alumnos.nombre}</p>
+        <p>Materia: ${alumnos.materia}</p>
+        <p>Nota: ${alumnos.nota}</p>
+        <p>${aprobado}</p>
+    </div>
+    <br>
+    `;
 })
